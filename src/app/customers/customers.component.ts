@@ -23,6 +23,7 @@ export class CustomersComponent implements OnInit {
     this.customerService.modalTrigger.subscribe(res => {
       this.showModal = res;
     })
+    this.token = localStorage.getItem('token');
     this.authService.tokenVal.subscribe(res => this.token = res);
   }
 

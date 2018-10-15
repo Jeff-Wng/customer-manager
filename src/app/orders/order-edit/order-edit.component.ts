@@ -29,6 +29,7 @@ export class OrderEditComponent implements OnInit {
       this.orderService.modalTrigger.subscribe(res => {
         this.showModal = res;
       })
+      this.token = localStorage.getItem('token');
       this.authService.tokenVal.subscribe(res => this.token = res);
   }
 

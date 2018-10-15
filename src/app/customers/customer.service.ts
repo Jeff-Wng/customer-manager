@@ -16,6 +16,7 @@ export class CustomerService {
         // SetTimeout is needed to allow time for the application and server to communicate before getting data
         setTimeout(() => {
             this.dataStorageService.getCustomer().subscribe(data => {
+                console.log(data);
                 this.customers = [];
                 for(let i of data['customers']) {
                     this.customers.push(new Customer(i._id, i.firstName, i.lastName, i.email, 'https://customer-manager-api.herokuapp.com/' + i.profileImg.substring(8), i.city, i.state));

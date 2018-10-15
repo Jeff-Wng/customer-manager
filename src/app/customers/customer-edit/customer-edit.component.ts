@@ -22,6 +22,7 @@ export class CustomerEditComponent implements OnInit {
     'email': 'example@example.com',
     'city': 'New York'
   };
+  uploadedImg: File = null;
   token = null;
 
   constructor(private http: HttpClient, private customerService: CustomerService, private authService: AuthService) { }
@@ -41,6 +42,7 @@ export class CustomerEditComponent implements OnInit {
     this.customerService.modalTrigger.subscribe(res => {
       this.showModal = res;
     })
+    this.token = localStorage.getItem('token');
     this.authService.tokenVal.subscribe(res => this.token = res);
   }
 
@@ -93,12 +95,16 @@ export class CustomerEditComponent implements OnInit {
         'Authorization': 'bearers ' + this.token
       })
     }
-    this.http.delete("https://customer-manager-api.herokuapp.com/customers/" + this.selectedCustomer['id'], httpHeader);
+    this.http.delete("https://customer-manager-api.herokuapp.com/customers/" + this.selectedCustomer['id'], httpHeader).subscribe();
     this.closeModal();
   }
 
   getCustomers() {
     this.loadCustomers.emit();
+  }
+
+  onChange(event) {
+    this.uploadedImg = event.target.files[0];
   }
 
 }

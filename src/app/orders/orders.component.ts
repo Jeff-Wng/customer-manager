@@ -23,6 +23,7 @@ export class OrdersComponent implements OnInit {
     this.getOrders();
     this.token = localStorage.getItem('token');
     this.authService.tokenVal.subscribe(res => this.token = res);
+    console.log(this.token);
   }
 
   getOrders() {

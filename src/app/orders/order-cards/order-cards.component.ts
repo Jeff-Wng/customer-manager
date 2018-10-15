@@ -19,6 +19,7 @@ export class OrderCardsComponent implements OnInit {
   constructor(private http: HttpClient, private orderService: OrderService, private authService: AuthService) { }
 
   ngOnInit() {
+    this.token = localStorage.getItem('token');
     this.authService.tokenVal.subscribe(res => this.token = res);
   }
   

@@ -2,6 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
 
+THe application's backend is hosted on Heroku's free tier service. When the app first runs, it takes a few seconds for the Heroku server to respond. So if you do not see anything at first, wait a few seconds and refresh.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

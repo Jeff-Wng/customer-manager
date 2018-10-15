@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <div *ngIf="!isLogin; else signUp">
+        <h2>Sign-Up</h2>
+      </div>
+      <ng-template #signUp>
+        <h2>Log-In</h2>
+      </ng-template>
+      <form [formGroup]="authForm" (ngSubmit)="onAuth()">
+          <span *ngIf="errMessage !== null && errMessage !== undefined" [ngStyle]="{'color': 'red'}">{{ errMessage }}</span>
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="text" id='email' formControlName='email' placeholder="E-mail" class='form-control'>
+          <span *ngIf="!authForm.get('email').valid && authForm.get('email').touched" class='help-block'>Please enter a valid email</span>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id='password' formControlName='password' placeholder="Password" class='form-control'>
+          <span *ngIf="!authForm.get('password').valid && authForm.get('password').touched" class='help-block'>Please enter your password</span>
+        </div>
+        <div *ngIf="!isLogin; else signup">
+          <a class='col-xs-12' (click)="changeAuth()">Already have an account? Log-In</a>
+        </div>
+        <ng-template #signup>
+          <a class="col-xs-12" (click)="changeAuth()">New user? Sign-Up</a>
+        </ng-template>
+        <button class="btn btn-primary" type='submit' [disabled]="!authForm.valid">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

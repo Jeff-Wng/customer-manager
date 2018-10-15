@@ -1,0 +1,52 @@
+<div id="modal" [ngClass]="{'activateModal': showModal, null: showModal === null}">
+  <div class="container">
+    <div class="row">
+      <div class='closeBtn' (click)="closeModal()">X</div>
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <div *ngIf="info; else changeInfo" class='infoModal'>
+          <div class="infoImg col-lg-4 col-xs-12">
+              <img [src]="selectedProduct.productImg" alt="{{ selectedProduct.name }}">
+          </div>
+          <div class="infoDesc col-lg-4 col-xs-12">
+            <p><strong>Name: </strong>{{ selectedProduct.name }}</p>
+            <p><strong>ID: </strong>{{ selectedProduct.id }}</p>
+            <p><strong>Price: </strong>{{ selectedProduct.price }}</p>
+            <p><strong>Description: </strong>{{ selectedProduct.description }}</p>
+          </div>
+        </div>
+        <ng-template #changeInfo>
+          <div *ngIf="isNew; else editProduct">
+              <h1 class='heading'>New Product</h1>
+            </div>
+            <ng-template #editProduct>
+              <h1>Edit Product</h1>
+            </ng-template>
+            <form [formGroup]="productForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id='name' formControlName='name' placeholder="Product Name" class='form-control' [value]="isEdit ? selectedProduct.name : null">
+                <span *ngIf="!productForm.get('name').valid && productForm.get('name').touched" class='help-block'>Please enter the product's name</span>
+              </div>
+              <div class="form-group">
+                <label for="price">Price</label>
+                <input type="text" id='price' formControlName='price' placeholder="Product Price" class='form-control' [value]="isEdit ? selectedProduct.price : null">
+                <span *ngIf="!productForm.get('price').valid && productForm.get('price').touched" class='help-block'>Please enter the product's price</span>
+              </div>
+              <div class="form-group">
+                <label for="description">Description</label>
+                <textarea name="description" id="description" formControlName='description' placeholder='Product Description' class='form-control' cols="30" rows="10" [value]="isEdit ? selectedProduct.description : null"></textarea>
+                <span *ngIf="!productForm.get('description').valid && productForm.get('description').touched" class='help-block'>Please enter the product's description</span>
+              </div>
+              <div class="form-group">
+                <label for="productImage">Product Image</label>
+                <input type="file" name='productImage' id='productImage' accept='image/*' (change)='onChange($event)'>
+              </div>
+              <button class="btn btn-primary" type='submit' [disabled]="!productForm.valid" (click)="closeModal()">Save</button>
+              <div *ngIf="isEdit">
+                <button class='btn btn-danger deleteBtn' (click)="deleteProduct()">Delete Product</button>
+              </div>
+            </form>
+        </ng-template>
+    </div>
+  </div>
+</div>

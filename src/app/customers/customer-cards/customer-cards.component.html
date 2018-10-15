@@ -1,0 +1,13 @@
+<div class="col-lg-4 col-sm-6 col-xs-12 cards">
+  <div class="bg-success card-header">
+    <p>{{ customer.firstName }} {{ customer.lastName }}</p>
+    <a (click)="editCustomer()">Edit</a>
+  </div>
+  <div class="col-xs-4">
+    <img [src]="customer.imagePath" alt="{{ customer.firstName }} {{ customer.lastName }}" class="userPic">
+  </div>
+  <div class="col-xs-8 card-info">
+    <p>{{ customer.city }}, {{ customer.state }}</p>
+    <a routerLink='/orders' (click)="emitSelectedCustomer()">View Orders</a>
+  </div>
+</div>

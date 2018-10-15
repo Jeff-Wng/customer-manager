@@ -1,0 +1,48 @@
+.col-xs-12 {
+    padding: 0;
+}
+
+.orders {
+    display: flex;
+    justify-content: space-between;
+    height: 150px;
+    margin-bottom: 20px;
+}
+
+.order-info {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding-top: 20px;
+    padding-left:  20px;
+}
+
+.rightContent {
+    display: flex;
+}
+
+.rightContent img {
+    height: 100%;
+    width: 150px;
+}
+
+.rightContent div {
+    width: 0px;
+    background-color: rgb(253, 82, 82);
+    opacity: 0;
+    transition: all 0.4s;
+
+}
+
+.orders:hover .rightContent div {
+    opacity: 1;
+    width: 75px;
+}
+
+.rightContent div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 25px;
+}

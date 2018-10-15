@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-success newOrder" (click)='triggerModal()' [disabled]="token === null">New Order</button>
+      <div *ngIf="token === null" [ngStyle]="{'display': 'inline-block', 'margin-left': '25px'}">
+        <p>*Only authenticated users can create new orders</p>
+      </div>
+    </div>
+    <div *ngIf="showError">
+      <p>*Only authenticated users can edit orders</p>
+    </div>
+  </div>
+</div>
+<app-order-edit (getOrders)="getOrders()"></app-order-edit>
+<!-- If the customer has no orders, a message will be displayed in it's place -->
+<div *ngIf="Orders.length <= 0; else cards">
+  <h2>This customer has no orders</h2>
+</div>
+<ng-template #cards>
+    <app-order-cards *ngFor="let orderEl of Orders"
+    [order]="orderEl"
+    (getOrders)="getOrders()"
+    (deleteTry)="showErrorMessage()"></app-order-cards>
+</ng-template>

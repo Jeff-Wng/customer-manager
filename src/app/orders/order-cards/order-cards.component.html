@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 bg-danger orders">
+      <div class='order-info'>
+        <p>{{ order.name }}</p>
+        <p>Price: ${{ order.price }}</p>
+        <p>Qty: {{ order.quantity }}</p>
+      </div>
+      <div class='rightContent'>
+        <img [src]="order.productImg" alt="{{ order.name }}">
+        <div class='deleteOrder' (click)="onDeleteOrder()">
+          <i class='fa fa-trash' aria-hidden='true'></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+ <div class="col-lg-4 col-sm-6 col-xs-12 cards">
+  <div class="bg-success card-header">
+    <p>{{ products.name }}</p>
+    <a (click)="onEditSelected()">Edit</a>
+  </div>
+  <div class="col-xs-4">
+    <img [src]="products.productImg" alt="{{ products.name }}" class="productPic" (click)="onSelected()">
+  </div>
+  <div class="col-xs-8 card-info">
+    <p>${{ products.price }}</p>
+    <a (click)="onSelected()" (click)="onSelected()">Details</a>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+#modal {
+    position: absolute;
+    z-index: 5;
+    background-color: #eee;
+    padding: 25px;
+    border: 1px solid black;
+    top: -500%;
+    opacity: 0;
+}
+
+.activateModal {
+    animation: showModal 0.3s linear forwards;
+}
+
+@keyframes showModal {
+    from {
+        top: -500%;
+        opacity: 0;
+    }
+    to {
+        top: 10%;
+        opacity: 1;
+    }
+}
+
+.closeBtn {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    float: right;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.closeBtn:active {
+    transform: scale(0.8);
+}
+
+.orderForm .col-xs-8 {
+    padding: 0;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+.heading {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.submitBtn {
+    width: 100px;
+}
+
+
+
+
+
+
+

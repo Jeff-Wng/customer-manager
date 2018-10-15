@@ -1,0 +1,32 @@
+p {
+    margin: 0;
+}
+
+.col-xs-4 {
+    padding: 0;
+}
+
+.cards {
+    margin-bottom: 50px;
+    height: 175px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.userPic {
+    height: 100%;
+    width: 100%;
+}
+
+.card-info {
+    height: 100px;
+    text-align: center;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+}
+

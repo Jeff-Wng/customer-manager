@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <button class='btn btn-success' (click)="triggerModal()" [disabled]="token === null">New Products</button>
+      <div *ngIf="token === null" [ngStyle]="{'display': 'inline-block', 'margin-left': '20px'}">
+        <p>*Only authenicated users can create new products</p>
+      </div>
+      <div *ngIf="showErrorMessage">
+        <p>*Only authenticated users can edit products</p>
+      </div>
+    </div>
+    <app-product-cards 
+      *ngFor="let productEl of products"
+      [products]="productEl"
+      (editTry)="showError()"></app-product-cards>
+    <app-product-edit 
+
+      (loadProducts)="getProducts()"></app-product-edit>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- Button to create new customer is disabed if JWT is not present -->
+      <button class='btn btn-success' (click)="triggerModal()" [disabled]="token === null">New Customer</button>
+      <div *ngIf="token === null" [ngStyle]="{'display': 'inline-block', 'margin-left': '20px'}">
+        <p>*Only authenticated users can create new customers</p>
+      </div>
+      <!-- Error message is shown if user is trying to access forbidden content when not authorized -->
+      <div *ngIf="showErrorMessage">
+        <p>*Only authenticated users can edit customers</p>
+      </div>
+    </div>
+    <app-customer-edit 
+      [isEdit]="isEdit"
+      (loadCustomers)="getCustomers()"></app-customer-edit>
+      
+    <!-- Customers is passed into app-customer-cards using a for loop -->
+    <app-customer-cards 
+      *ngFor="let customerEl of customers"
+      [customer]="customerEl"
+      (triggerEditModal)="triggerEditModal()"
+      (editTry)="showError()"></app-customer-cards>
+  </div>
+</div>

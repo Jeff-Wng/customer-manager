@@ -1,0 +1,28 @@
+<div id="modal" [ngClass]="{'activateModal': showModal, null: showModal === null}">
+    <div class="container">
+      <div class="row">
+        <div class='closeBtn' (click)="closeModal()">X</div>
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+          <h1 class='heading'>New Order</h1>
+          <form [formGroup]="orderForm" (ngSubmit)="onSubmit()" class='orderForm'>
+            <div class="form-group col-xs-8">
+              <label for="productId">Product ID</label>
+              <input type="text" id='productId' formControlName='productId' placeholder="Product ID" class='form-control'>
+              <span *ngIf="!orderForm.get('productId').valid && orderForm.get('productId').touched" class='help-block'>Please enter the product ID</span>
+            </div>
+            <div class="form-group col-xs-2">
+              <label for="qty">Qty</label>
+              <select id='qty' formControlName='qty' class='form-control'>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>   
+            </div>
+            <button class="btn btn-primary submitBtn" type='submit' [disabled]="!orderForm.valid">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>

@@ -56,16 +56,19 @@ export class CustomerEditComponent implements OnInit {
     }
     if(!this.isEdit) {
       // JSON data is normally used to call API
-      const data = {
-        firstName: this.editForm.value.firstName,
-        lastName: this.editForm.value.lastName,
-        email: this.editForm.value.email,
-        gender: this.editForm.value.gender,
-        city: this.editForm.value.city,
-        state: this.editForm.value.state
+      const fd = new FormData();
+        fd.append('firstName', this.editForm.value.firstName);
+        fd.append('lastName', this.editForm.value.lastName);
+        fd.append('email', this.editForm.value.email);
+        fd.append('gender', this.editForm.value.gender);
+        fd.append('city', this.editForm.value.city);
+        fd.append('state', this.editForm.value.state);
+        if(this.uploadedImg !== null && this.uploadedImg !== undefined) {
+          fd.append('profileImage', this.uploadedImg, this.uploadedImg.name);
+        }
+        this.http.post("https://customer-manager-api.herokuapp.com/customers/", fd, httpHeader).subscribe(res => console.log(res));
       }
-      this.http.post("https://customer-manager-api.herokuapp.com/customers/", data, httpHeader).subscribe(res => console.log(res));
-    } else {
+     else {
       // For patch work, FormData is needed for the API
       const data = [
         { "propName": "firstName", "value": this.editForm.value.firstName },

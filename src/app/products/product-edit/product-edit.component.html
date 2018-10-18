@@ -37,7 +37,7 @@
                 <textarea name="description" id="description" formControlName='description' placeholder='Product Description' class='form-control' cols="30" rows="10" [value]="isEdit ? selectedProduct.description : null"></textarea>
                 <span *ngIf="!productForm.get('description').valid && productForm.get('description').touched" class='help-block'>Please enter the product's description</span>
               </div>
-              <div class="form-group">
+              <div class="form-group" *ngIf="isNew">
                 <label for="productImage">Product Image</label>
                 <input type="file" name='productImage' id='productImage' accept='image/*' (change)='onChange($event)'>
               </div>

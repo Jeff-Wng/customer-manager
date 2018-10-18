@@ -4,7 +4,7 @@
     background-color: #eee;
     padding: 50px 30px;
     border: 1px solid black;
-    top: -500%;
+    top: -1000px;
     opacity: 0;
 }
 
@@ -14,7 +14,7 @@
 
 @keyframes showModal {
     from {
-        top: -500%;
+        top: -1000px;
         opacity: 0;
     }
     to {
